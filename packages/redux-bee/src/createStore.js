@@ -1,5 +1,5 @@
 import createSagaMiddleware from 'redux-saga';
-import {combineReducers} from 'redux';
+import {combineReducers} from 'redux-immutable';
 import {all} from '@redux-saga/core/effects';
 import {applyMiddleware} from 'redux';
 import {createStore} from 'redux';

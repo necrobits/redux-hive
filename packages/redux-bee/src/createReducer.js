@@ -16,7 +16,7 @@ function createReducer(
     _handlers = _.merge(_handlers, addonHandlers);
   });
 
-  const _initialState = _state;
+  const _initialState = fromJS(_state);
   return (state = _initialState, action) => {
     if (_.has(_handlers, action.type)) {
       return _handlers[action.type](state, action);

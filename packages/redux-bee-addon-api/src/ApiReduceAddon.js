@@ -23,26 +23,23 @@ function ApiReduceAddon(config, targetReducer) {
         const failureActionName = makeActionName(apiCallName, 'FAILURE')
         const {loading = 'loading', success, error = 'error'} = reduceCfg;
 
-        handlers[loadingActionName] = (state, action) => _.omit(({
-            ...state,
-            [loading]: true,
-            [success]: null,
-            [error]: null
-        }), ['null']);
+        handlers[loadingActionName] = (state, action) => state
+            .set(loading, true)
+            .set(success, null)
+            .set(error, null)
+            .delete(null);
 
-        handlers[successActionName] = (state, action) => _.omit(({
-            ...state,
-            [loading]: false,
-            [success]: action.payload,
-            [error]: null
-        }), ['null']);
+        handlers[successActionName] = (state, action) => state
+            .set(loading, false)
+            .set(success, action.payload)
+            .set(error, null)
+            .delete(null);
 
-        handlers[failureActionName] = (state, action) => _.omit(({
-            ...state,
-            [loading]: false,
-            [success]: null,
-            [error]: action.payload,
-        }), ['null']);
+        handlers[failureActionName] = (state, action) => state
+            .set(loading, false)
+            .set(success, null)
+            .set(error, action.payload)
+            .delete(null);
 
     });
     return {
