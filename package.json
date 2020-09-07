@@ -9,7 +9,7 @@
     "url": "git+https://github.com/neural-gi/redux-bee.git"
   },
   "author": "Phuc Tran <andy.tran11996@gmail.com>",
-  "license": "ISC",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/neural-gi/redux-bee/issues"
   }
