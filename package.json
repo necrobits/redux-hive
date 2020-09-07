@@ -1,16 +1,16 @@
 {
-  "name": "redux-bee",
+  "name": "redux-hive",
   "private": true,
   "devDependencies": {
     "lerna": "^3.22.1"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/neural-gi/redux-bee.git"
+    "url": "git+https://github.com/neural-gi/redux-hive.git"
   },
   "author": "Phuc Tran <andy.tran11996@gmail.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/neural-gi/redux-bee/issues"
+    "url": "https://github.com/neural-gi/redux-hive/issues"
   }
 }
