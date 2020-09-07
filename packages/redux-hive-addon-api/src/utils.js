@@ -5,7 +5,7 @@ function makeActionName(name, state) {
     if (!_.includes(['REQUEST', 'SUCCESS', 'FAILURE'], state)) {
         throw Error(`Invalid state: ${state}. State must be one of REQUEST, SUCCESS, FAILURE`);
     }
-    return `@@redux-bee/api/${name}/${state}`;
+    return `@@redux-hive/api/${name}/${state}`;
 }
 
 function makeAction(name, state, payload = undefined) {

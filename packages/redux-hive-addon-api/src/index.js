@@ -3,6 +3,6 @@ import {ApiReduceAddon} from "./ApiReduceAddon";
 
 export {
     BeeApiAddon,
-    createApiAction,
     ApiReduceAddon,
+    createApiAction,
 };

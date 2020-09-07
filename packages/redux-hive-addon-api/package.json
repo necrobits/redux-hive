@@ -1,14 +1,15 @@
 {
   "name": "redux-hive-addon-api",
   "version": "0.1.0",
-  "description": "",
+  "description": "This is an addon for Redux-Hive which helps to work with API calls easier",
   "main": "dist/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "babel ./src --source-maps --out-dir ./dist"
   },
   "keywords": [],
-  "author": "",
+  "repository": "https://github.com/neural-gi/redux-hive/tree/master/packages/redux-hive-addon-api",
+  "author": "Phuc Tran",
   "license": "MIT",
   "devDependencies": {
     "babel-cli": "^6.26.0",

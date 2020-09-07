@@ -1,14 +1,15 @@
 {
   "name": "redux-hive",
   "version": "0.1.0",
-  "description": "",
+  "description": "Redux Hive is a library that helps you work with Redux easier",
   "main": "dist/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "babel ./src --source-maps --out-dir ./dist"
   },
   "keywords": [],
-  "author": "",
+  "author": "Phuc Tran",
+  "repository": "https://github.com/neural-gi/redux-hive/tree/master/packages/redux-hive",
   "license": "MIT",
   "devDependencies": {
     "@redux-saga/core": "^1.1.3",
