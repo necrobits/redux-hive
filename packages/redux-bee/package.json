@@ -1,32 +1,15 @@
 {
   "name": "redux-bee",
   "version": "0.1.0",
-  "description": "Redux Bee is a small library that helps you work with Redux faster and write cleaner code",
+  "description": "",
   "main": "dist/index.js",
-  "types": "src/index.d.ts",
-  "files": [
-    "src",
-    "dist"
-  ],
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "babel ./src --source-maps --out-dir ./dist"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/neural-gi/redux-bee.git"
-  },
-  "keywords": [
-    "redux",
-    "bee",
-    "helper"
-  ],
-  "author": "Phuc Tran",
+  "keywords": [],
+  "author": "",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/neural-gi/redux-bee/issues"
-  },
-  "homepage": "https://github.com/neural-gi/redux-bee#readme",
   "devDependencies": {
     "@redux-saga/core": "^1.1.3",
     "babel-cli": "^6.26.0",
