@@ -1,8 +1,8 @@
 import {put, takeEvery} from "@redux-saga/core/effects";
 import request from "./request";
-import {makeAction, makeActionName} from "./utils";
+import {makeAction} from "./utils";
 
-const BEE_HTTP_REQUEST = '@@redux-bee/_http/call';
+const BEE_HTTP_REQUEST = '@@redux-bee/api/_call';
 
 function createApiAction(name, {
     url,
