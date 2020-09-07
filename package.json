@@ -4,6 +4,10 @@
   "devDependencies": {
     "lerna": "^3.22.1"
   },
+  "scripts": {
+    "build": "lerna run build",
+    "release": "learna run publish"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/neural-gi/redux-hive.git"
