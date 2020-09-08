@@ -1,6 +1,6 @@
 {
   "name": "redux-hive",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "Redux Hive is a library that helps you work with Redux easier",
   "main": "dist/index.js",
   "scripts": {
