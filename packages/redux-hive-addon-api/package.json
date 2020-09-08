@@ -1,6 +1,6 @@
 {
   "name": "redux-hive-addon-api",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "description": "This is an addon for Redux-Hive which helps to work with API calls easier",
   "main": "dist/index.js",
   "scripts": {
