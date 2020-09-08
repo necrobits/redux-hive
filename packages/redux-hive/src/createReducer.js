@@ -1,28 +1,36 @@
-import _ from 'lodash';
-import { fromJS } from 'immutable';
+import _ from "lodash";
+import {produce} from "immer";
 
 function createReducer(
-  {
-    initialState = {},
-    handlers = {},
-    addons = [],
-  } = {}) {
-  let _state = initialState;
-  let _handlers = handlers;
-  _.forEach(addons, (addon) => {
-    const addonState = addon.initialState || {};
-    const addonHandlers = addon.handlers || [];
-    _state = _.merge(_state, addonState);
-    _handlers = _.merge(_handlers, addonHandlers);
-  });
+    {
+        initialState = {},
+        handlers = {},
+        addons = [],
+    } = {}) {
+    let _initialState = initialState;
+    let _handlers = handlers;
+    _.forEach(addons, (addon) => {
+        const addonState = addon.initialState || {};
+        const addonHandlers = addon.handlers || [];
+        _initialState = _.merge(_initialState, addonState);
+        _handlers = _.merge(_handlers, addonHandlers);
+    });
 
-  const _initialState = fromJS(_state);
-  return (state = _initialState, action) => {
-    if (_.has(_handlers, action.type)) {
-      return _handlers[action.type](state, action);
-    }
-    return state;
-  };
+    return (state = _initialState, action) => {
+        if (_.has(_handlers, action.type)) {
+            let handlerCfg = _handlers[action.type];
+            if (!_.isArray(handlerCfg)) {
+                handlerCfg = [handlerCfg];
+            }
+            let [handler, options] = handlerCfg;
+
+            if (!_.get(options, 'autoImmer', true)) {
+                return handler(state, action);
+            }
+            return produce(state, draftState => handler(draftState, action));
+        }
+        return state;
+    };
 }
 
 export default createReducer;

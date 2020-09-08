@@ -8,7 +8,7 @@
     "build": "babel ./src --source-maps --out-dir ./dist"
   },
   "keywords": [],
-  "author": "Phuc Tran",
+  "author": "Phuc Tran <andy.tran11996@gmail.com>",
   "repository": "https://github.com/neural-gi/redux-hive/tree/master/packages/redux-hive",
   "license": "MIT",
   "devDependencies": {
@@ -17,10 +17,14 @@
     "babel-core": "^6.26.3",
     "babel-preset-es2015": "^6.24.1",
     "babel-preset-stage-0": "^6.24.1",
+    "immutable": "^4.0.0-rc.12",
     "lerna": "^3.22.1",
     "lodash": "^4.17.20",
     "redux": "^4.0.5",
     "redux-immutable": "^4.0.0",
     "redux-saga": "^1.1.3"
+  },
+  "dependencies": {
+    "immer": "^7.0.8"
   }
 }

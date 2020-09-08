@@ -1,8 +1,8 @@
-import {BeeApiAddon, createApiAction} from "./BeeApiAddon";
+import {ApiAddon, createApiAction} from "./ApiAddon";
 import {ApiReduceAddon} from "./ApiReduceAddon";
 
 export {
-    BeeApiAddon,
+    ApiAddon,
     ApiReduceAddon,
     createApiAction,
 };

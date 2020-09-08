@@ -1,7 +1,7 @@
 import createSagaMiddleware from 'redux-saga';
-import {combineReducers} from 'redux-immutable';
+import {combineReducers} from 'redux';
 import {all} from '@redux-saga/core/effects';
-import {applyMiddleware} from 'redux';
+import {applyMiddleware, compose} from 'redux';
 import {createStore} from 'redux';
 import createReducer from './createReducer';
 
@@ -18,7 +18,7 @@ export default function (
             handlers: addon.handlers || {},
             initialState: addon.initialState || {},
         };
-        if (_.has(reducers, targetReducer)) {
+        if (targetReducer && _.has(reducers, targetReducer)) {
             reducers[targetReducer] = _.merge(
                 reducers[targetReducer],
                 addonReducerCfg,
