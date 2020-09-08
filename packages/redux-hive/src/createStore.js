@@ -25,8 +25,9 @@ export default function (
             );
         }
         const addonSagas = addon.sagas || [];
-
+        const addonMiddlewares = addon.middlewares || [];
         sagas = _.concat(addonSagas);
+        middlewares = _.concat(addonMiddlewares);
     });
 
     const _reducers = _.mapValues(reducers, (cfg) => createReducer(cfg));
