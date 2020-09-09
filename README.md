@@ -9,6 +9,9 @@ Redux Hive has built-in support for ImmerJS, there is no need to install it expl
 npm install redux-hive
 ```
 ## Basic usage
+You just need to create the store by using `createStore`. 
+`store` is a native redux store; therefore, it can be use as usual.
+
 ```javascript
 import {createStore} from "redux-hive";
 
