@@ -29,14 +29,22 @@ export default function (
         sagas = _.concat(addonSagas);
         middlewares = _.concat(addonMiddlewares);
     });
-
+    // Make root reducer
     const _reducers = _.mapValues(reducers, (cfg) => createReducer(cfg));
     const rootReducer = combineReducers(_reducers);
+    // Make root saga
+    // Collect sagas from the reducers' addons
+    let reducerSagas = [];
+    _.forIn(reducers, (reducerCfg) => {
+        _.forEach(reducerCfg.addons || [], (addon) => {
+            reducerSagas = _.concat(reducerSagas, addon.sagas || []);
+        })
+    });
     const rootSaga = function* () {
-        yield all([...sagas]);
+        yield all([...sagas, ...reducerSagas]);
     };
-    const sagaMiddleware = createSagaMiddleware();
 
+    const sagaMiddleware = createSagaMiddleware();
     const composeEnhancers =
         process.env.NODE_ENV !== 'production' &&
         typeof window === 'object' &&
