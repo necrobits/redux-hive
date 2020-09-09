@@ -1,6 +1,6 @@
 {
   "name": "redux-hive-addon-routersync",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "description": "A Redux Hive Addon for syncing Redux and Router",
   "main": "dist/index.js",
   "scripts": {
