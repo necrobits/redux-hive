@@ -12,10 +12,8 @@ import {makeActionName} from "./utils";
  *      defaultValue: [],
  *  }
  * }
- * @param targetReducer: name of the target reducer. If this addon is being used in reducer-level, then there is no need to specify this.
- * destination can be a string ( attribute name in state ) or a function (state, payload) => state
  */
-function ApiReduceAddon(config, targetReducer) {
+function ApiReduceAddon(config) {
     const handlers = {};
     _.forIn(config, (reduceCfg, apiCallName) => {
         const loadingActionName = makeActionName(apiCallName, 'REQUEST');
@@ -59,7 +57,6 @@ function ApiReduceAddon(config, targetReducer) {
 
     });
     return {
-        target: targetReducer,
         handlers,
     };
 

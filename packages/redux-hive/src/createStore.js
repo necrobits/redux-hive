@@ -13,35 +13,22 @@ export default function (
         addons = [],
     }) {
     _.forEach(addons, function (addon) {
-        const targetReducer = addon.target;
-        const addonReducerCfg = {
-            handlers: addon.handlers || {},
-            initialState: addon.initialState || {},
-        };
-        if (targetReducer && _.has(reducers, targetReducer)) {
-            reducers[targetReducer] = _.merge(
-                reducers[targetReducer],
-                addonReducerCfg,
-            );
-        }
         const addonSagas = addon.sagas || [];
         const addonMiddlewares = addon.middlewares || [];
         sagas = _.concat(addonSagas);
         middlewares = _.concat(addonMiddlewares);
     });
-    // Make root reducer
     const _reducers = _.mapValues(reducers, (cfg) => createReducer(cfg));
-    const rootReducer = combineReducers(_reducers);
-    // Make root saga
-    // Collect sagas from the reducers' addons
-    let reducerSagas = [];
     _.forIn(reducers, (reducerCfg) => {
         _.forEach(reducerCfg.addons || [], (addon) => {
-            reducerSagas = _.concat(reducerSagas, addon.sagas || []);
+            sagas = _.concat(sagas, addon.sagas || []);
+            middlewares = _.concat(middlewares, addon.middlewares || []);
         })
     });
+
+    const rootReducer = combineReducers(_reducers);
     const rootSaga = function* () {
-        yield all([...sagas, ...reducerSagas]);
+        yield all([...sagas]);
     };
 
     const sagaMiddleware = createSagaMiddleware();

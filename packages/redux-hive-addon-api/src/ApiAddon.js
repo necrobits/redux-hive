@@ -56,7 +56,7 @@ function headerInjectorMiddleware(headerCreator) {
 
 function ApiAddon({
     injectHeader
-                  }) {
+                  } = {}) {
     const requestSaga = function* () {
         yield takeEvery(BEE_HTTP_REQUEST, callApi);
     };

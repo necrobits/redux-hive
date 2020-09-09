@@ -33,7 +33,7 @@ function request(url, {
         body,
         headers,
     }).then(async (response) => {
-        let responseBody = null;
+        let responseBody;
         let ok = response.ok || false;
         const statusCode = response.status;
         responseBody = await response.text();

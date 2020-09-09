@@ -1,12 +1,14 @@
 import * as queryString from "query-string";
-import {put, call, take, takeEvery} from "@redux-saga/core/effects";
+import {call, put, takeEvery} from "@redux-saga/core/effects";
 import {eventChannel} from "redux-saga";
 
 const routerSyncActionName = "@@redux-hive/routersync";
+// Adapter for 'history' v4
+const defaultLocationAdapter = (location) => location;
 
-function locationEventChannel(history) {
+function locationEventChannel(history, adapter) {
     return eventChannel(emit => {
-        return history.listen(({location}) => emit(location));
+        return history.listen((obj) => emit(adapter(obj)));
     })
 }
 
@@ -18,13 +20,17 @@ function makeStateFromLocation(location) {
         pathname,
         query,
         hash,
+        state: location.state || null,
+        key: location.key
     }
 }
 
 
-function RouterSyncAddon(history, target = 'router') {
+function RouterSyncAddon(history, {
+    adapter = defaultLocationAdapter,
+} = {}) {
     const querySaga = function* () {
-        const channel = yield call(locationEventChannel, history);
+        const channel = yield call(locationEventChannel, history, adapter);
         yield takeEvery(channel, function* (location) {
             yield put({
                 type: routerSyncActionName,
@@ -37,10 +43,11 @@ function RouterSyncAddon(history, target = 'router') {
             state.pathname = action.payload.pathname;
             state.query = action.payload.query;
             state.hash = action.payload.hash;
+            state.key = action.payload.key;
+            state.state = action.payload.state;
         }
-    }
+    };
     return {
-        target,
         initialState: makeStateFromLocation(history.location),
         handlers,
         sagas: [querySaga()]
