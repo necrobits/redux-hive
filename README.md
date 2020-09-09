@@ -70,4 +70,13 @@ import {createApiAction} from "redux-hive-addon-api";
 store.dispatch(createApiAction('FETCH_TODOS',{
   url: "http://localhost:3000/api/v1/todos",
 }))
+
+// Your state after receiving response from server
+{
+  todos: {
+    myTodos: [...],
+    loading: false,
+    error: null,
+  }
+}
 ```
