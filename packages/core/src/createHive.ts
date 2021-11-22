@@ -1,8 +1,7 @@
 import _ from "lodash";
 import {all} from "@redux-saga/core/effects";
 import type {Saga} from "redux-saga";
-import { Reducer } from "redux";
-import { createReducer, ReducerMap } from "./createReducer";
+import { createReducer, Reducer, ReducerMap, ReducerOrModifier } from "./createReducer";
 import {  ActionMap, ActionPattern } from "./createAction";
 
 
@@ -37,7 +36,7 @@ export function createHive<S>({
     const actions: ActionMap = {};
     if (!!reducerBuilder){
         const builder = {
-            add(pattern: ActionPattern, reducer: Reducer<S>){
+            add(pattern: ActionPattern, reducer: ReducerOrModifier<S>){
                 let typeName: string;
                 if (_.isString(pattern)){
                     typeName = pattern;
