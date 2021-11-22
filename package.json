@@ -1,8 +1,9 @@
 {
   "name": "redux-hive",
   "private": true,
-  "version": "0.0.2",
+  "version": "independent",
   "devDependencies": {
     "lerna": "^4.0.0"
-  }
+  },
+  "dependencies": {}
 }
