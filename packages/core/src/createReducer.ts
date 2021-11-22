@@ -4,7 +4,7 @@ import _ from 'lodash';
 import type { Reducer } from 'redux';
 import { Action } from './createAction';
 
-export type StateModifier<S=any, A extends Action<any>=Action<any>> = (state: S | undefined, action: A) => void;
+export type StateModifier<S=any, A extends Action<any>=Action<any>> = (state: S, action?: A) => void;
 export type ReducerMap<S> = { [actionType: string]: Reducer<S> | StateModifier<S> };
 type ReducerConfig<S> = {
     initialState: S;
