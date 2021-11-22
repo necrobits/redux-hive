@@ -4,6 +4,7 @@ import _ from 'lodash';
 import type { Reducer } from 'redux';
 import { Action } from './createAction';
 
+
 export type ReducerMap<S> = { [actionType: string]: Reducer<S> };
 type ReducerConfig<S> = {
     initialState: S;
@@ -16,6 +17,7 @@ export function createReducer<S>({
     reducers,
     usingImmer = true,
 }: ReducerConfig<S>): Reducer<S> {
+  
     return (state: S = initialState, action: Action): S => {
         if (!_.has(reducers, action.type)) {
             return state;
@@ -24,8 +26,12 @@ export function createReducer<S>({
         if (!usingImmer) {
             return reducer(state, action);
         }
-        return produce(state, (draft: Draft<S>) => {
+        const nextState = produce(state, (draft: Draft<S>) => {
             reducer(draft as S, action);
         });
+        if (!nextState){
+            return state;
+        }
+        return state;
     }
 }
