@@ -2,14 +2,14 @@
   "name": "@redux-hive/core",
   "version": "0.0.1",
   "main": "./lib/cjs/index.js",
-  "module": "./lib/esm.index.js",
+  "module": "./lib/esm/index.js",
   "types": "./lib/esm/index.d.ts",
   "license": "MIT",
   "scripts": {
     "build": "yarn build:esm && yarn build:cjs",
     "build:esm": "tsc",
     "build:cjs": "tsc --module commonjs --outDir lib/cjs"
- },
+  },
   "devDependencies": {
     "@types/lodash": "^4.14.177",
     "@types/redux": "^3.6.0",

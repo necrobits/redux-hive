@@ -2,12 +2,11 @@
 import { Draft, produce } from 'immer';
 import _ from 'lodash';
 import { Action } from './createAction';
-import { AnyAction } from 'redux';
 
-export type Reducer<S=any, A extends Action = AnyAction> = (state: S, action?: A) => S;
-export type StateModifier<S=any, A extends Action<any>=Action<any>> = (state: S, action?: A) => void;
-export type ReducerOrModifier<S> =  Reducer<S> | StateModifier<S>
-export type ReducerMap<S> = { [actionType: string]: ReducerOrModifier<S> };
+export type Reducer<S=any, A extends Action = Action> = (state: S, action?: A) => S;
+export type StateModifier<S=any, A extends Action = Action> = (state: S, action?: A) => void;
+export type ReducerOrModifier<S=any> =  Reducer<S> | StateModifier<S>
+export type ReducerMap<S=any> = { [actionType: string]: ReducerOrModifier<S> };
 type ReducerConfig<S> = {
     initialState: S;
     reducers: ReducerMap<S>;
@@ -34,6 +33,6 @@ export function createReducer<S>({
         if (!nextState){
             return state;
         }
-        return state;
+        return nextState;
     }
 }

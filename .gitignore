@@ -1,5 +1,8 @@
 .DS_STORE
+**/.DS_STORE
 node_modules
+**/node_modules
+
 scripts/flow/*/.flowconfig
 .flowconfig
 *~
@@ -7,7 +10,10 @@ scripts/flow/*/.flowconfig
 .grunt
 _SpecRunner.html
 __benchmarks__
+**/build/
 build/
+lib/
+**/lib/
 remote-repo/
 coverage/
 .module-cache
@@ -19,8 +25,10 @@ chrome-user-data
 *.sublime-project
 *.sublime-workspace
 .idea
+**/.idea
 *.iml
 .vscode
+**/.vscode
 *.swp
 *.swo
 
@@ -36,3 +44,4 @@ packages/react-devtools-extensions/.tempUserDataDir
 packages/react-devtools-inline/dist
 packages/react-devtools-shell/dist
 packages/react-devtools-timeline/dist
+
