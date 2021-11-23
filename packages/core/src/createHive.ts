@@ -23,7 +23,6 @@ export interface Hive<S = any> {
     saga?: Saga;
 }
 
-
 export function createHive<S>({
                                   name,
                                   initialState,
