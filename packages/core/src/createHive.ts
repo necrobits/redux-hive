@@ -8,7 +8,7 @@ export interface ReducerBuilder<S> {
     add(pattern: ActionPattern, reducer: ReducerOrModifier<S>): void
 }
 
-type HiveConfig<S = any> = {
+export type HiveConfig<S = any> = {
     name: string;
     initialState: S;
     reducers?: ReducerMap<S>;
