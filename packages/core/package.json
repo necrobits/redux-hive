@@ -1,6 +1,6 @@
 {
   "name": "@redux-hive/core",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "main": "./lib/cjs/index.js",
   "module": "./lib/esm/index.js",
   "types": "./lib/esm/index.d.ts",
