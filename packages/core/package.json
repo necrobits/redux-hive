@@ -1,31 +1,31 @@
 {
-  "name": "@redux-hive/core",
-  "version": "0.2.0",
-  "main": "./lib/cjs/index.js",
-  "module": "./lib/esm/index.js",
-  "types": "./lib/esm/index.d.ts",
-  "license": "MIT",
-  "files": [
-    "lib",
-    "README.md"
-  ],
-  "scripts": {
-    "build": "yarn build:esm && yarn build:cjs",
-    "build:esm": "tsc",
-    "build:cjs": "tsc --module commonjs --outDir lib/cjs"
-  },
-  "devDependencies": {
-    "@types/lodash": "^4.14.179",
-    "@types/redux": "^3.6.0",
-    "@types/redux-saga": "^0.10.5",
-    "redux-devtools-extension": "^2.13.9",
-    "typescript": "^4.6.2"
-  },
-  "dependencies": {
-    "immer": "^9.0.12",
-    "lodash": "^4.17.21",
-    "react-redux": "^7.2.6",
-    "redux": "^4.1.2",
-    "redux-saga": "^1.1.3"
-  }
+    "name": "@redux-hive/core",
+    "version": "0.2.1",
+    "main": "./lib/cjs/index.js",
+    "module": "./lib/esm/index.js",
+    "types": "./lib/esm/index.d.ts",
+    "license": "MIT",
+    "files": [
+        "lib",
+        "README.md"
+    ],
+    "scripts": {
+        "build": "yarn build:esm && yarn build:cjs",
+        "build:esm": "tsc",
+        "build:cjs": "tsc --module commonjs --outDir lib/cjs"
+    },
+    "devDependencies": {
+        "@types/lodash": "^4.14.179",
+        "@types/redux": "^3.6.0",
+        "@types/redux-saga": "^0.10.5",
+        "redux-devtools-extension": "^2.13.9",
+        "typescript": "^5.0.4"
+    },
+    "dependencies": {
+        "immer": "^9.0.12",
+        "lodash": "^4.17.21",
+        "react-redux": "^7.2.6",
+        "redux": "^4.1.2",
+        "redux-saga": "^1.1.3"
+    }
 }

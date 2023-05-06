@@ -1,28 +1,31 @@
-import {applyMiddleware, combineReducers, compose, createStore, Middleware, Store} from "redux"
-import {all} from "@redux-saga/core/effects";
+import { applyMiddleware, combineReducers, compose, createStore, Middleware, Store } from "redux"
+import { all } from "@redux-saga/core/effects";
 
-import {Hive, HiveConfig, createHive} from "./createHive"
+import { Hive, HiveConfig, createHive } from "./createHive"
 import createSagaMiddleware from "@redux-saga/core";
+import { ReducersMapObject } from "redux";
 
 export type HiveStoreConfig = {
     hives: (Hive | HiveConfig)[];
     middlewares: Middleware[],
+    enhancers?: Function[],
     enableDevTools?: boolean,
 }
 
-function isHiveConfig(hive: Hive | HiveConfig): hive is HiveConfig{
+function isHiveConfig(hive: Hive | HiveConfig): hive is HiveConfig {
     return hive.hasOwnProperty('initialState');
 }
 
 export default function ({
-                             hives,
-                             middlewares,
-                             enableDevTools = true,
-                         }: HiveStoreConfig): Store {
+    hives,
+    middlewares,
+    enhancers = [],
+    enableDevTools = true,
+}: HiveStoreConfig): Store {
     // Combine reducers from the hives    
-    const rootReducerConfig = {};
+    const rootReducerConfig: ReducersMapObject = {};
     for (let hive of hives) {
-        if (isHiveConfig(hive)){
+        if (isHiveConfig(hive)) {
             hive = createHive(hive);
         }
         rootReducerConfig[hive.name] = hive.reducer;
@@ -47,7 +50,7 @@ export default function ({
 
     const store = createStore(
         rootReducer,
-        composeEnhancers(applyMiddleware(...middlewares, sagaMiddleware))
+        composeEnhancers(applyMiddleware(...middlewares, sagaMiddleware), ...enhancers)
     );
     sagaMiddleware.run(rootSaga);
     return store;
